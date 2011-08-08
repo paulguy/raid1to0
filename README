@@ -1,0 +1,19 @@
+raid 1 to 0 converter
+
+Converts linux MD version 0.90 raid 1 to raid 0.  It's very rough, since it's mostly for my personal use, but someone 
+else might find it useful.
+
+building
+
+gcc -o raid1to0 lib1to0.c raid1to0.c
+
+running
+
+./raid1to0 device1 device2 device3 ...
+
+example: ./raid1to0 /dev/sda /dev/sdb /dev/sdc
+
+It takes no other arguments, and it gives you no chance to abort before it begins.  It'll print out a lot of 
+information provided in the superblock, then begin.  It'll show progess as "current chunk/total chunks" then report 
+completion, or error.  On an error after the process has started, some filesystem damage has occurred and recovery 
+may be difficult or impossible.
